@@ -42,7 +42,7 @@ public class RegisterTests extends TestUtilities {
         // Click 'Create Account button'
         AccountCreatedPage accountCreatedPage = signupPage.clickCreateAccount();
         // Verify that 'ACCOUNT CREATED!' is visible
-        Assert.assertEquals("ACCOUNT CREATED!", accountCreatedPage.getAccountResultMessage(), "No se visualiza el mensaje 'ACCOUNT CREATED!'");
+        Assert.assertEquals(accountCreatedPage.getAccountResultMessage(), "ACCOUNT CREATED!", "No se visualiza el mensaje 'ACCOUNT CREATED!'");
         // Click 'Continue' button
         accountCreatedPage.clickContinueButton();
         // Verify that 'Logged in as username' is visible
@@ -50,8 +50,9 @@ public class RegisterTests extends TestUtilities {
         // Click 'Delete Account' button
         DeleteAccountPage deleteAccountPage = navBarPage.clickDeleteAccountLink();
         // Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
-        Assert.assertEquals("ACCOUNT DELETED!", deleteAccountPage.getAccountResultMessage(), "No se visualiza el mensaje 'ACCOUNT DELETED!'");
+        Assert.assertEquals(deleteAccountPage.getAccountResultMessage(), "ACCOUNT DELETED!", "No se visualiza el mensaje 'ACCOUNT DELETED!'");
         deleteAccountPage.clickContinueButton();
-
     }
+
+
 }
