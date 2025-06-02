@@ -1,16 +1,14 @@
 package com.automationexercise.tests.cart;
 
 import com.automationexercise.tests.base.TestUtilities;
-import com.automationexercise.tests.page.CartPage;
-import com.automationexercise.tests.page.NavBarPage;
-import com.automationexercise.tests.page.ProductsPage;
+import com.automationexercise.tests.page.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CartTests extends TestUtilities {
 
     @Test
-    public void verifySubscriptionInHomePage() {
+    public void verifySubscriptionInHomePageTest() {
         //1. Launch browser
         //2. Navigate to url 'http://automationexercise.com'
         //3. Verify that home page is visible successfully
@@ -30,7 +28,7 @@ public class CartTests extends TestUtilities {
     }
 
     @Test
-    public void addProductsInCart() {
+    public void addProductsInCartTest() {
         //1. Launch browser
         //2. Navigate to url 'http://automationexercise.com'
         //3. Verify that home page is visible successfully
@@ -54,5 +52,29 @@ public class CartTests extends TestUtilities {
         Assert.assertTrue(cartPage.productPriceIsDisplayed(), "El precio del producto no se encuentra visible.");
         Assert.assertTrue(cartPage.productQuantityIsDisplayed(), "La cantidad del producto no se encuentra visible.");
         Assert.assertTrue(cartPage.productTotalPriceIsDisplayed(), "El precio total del producto no se encuentra visible.");
+    }
+
+    @Test
+    public void verifyProductQuantityInCartTest() {
+        //1. Launch browser
+        //2. Navigate to url 'http://automationexercise.com'
+        //3. Verify that home page is visible successfully
+        log.info("Ejecutando verifyProductQuantityInCart");
+        NavBarPage navBarPage = new NavBarPage(driver, log);
+        navBarPage.openPage();
+        //4. Click 'View Product' for any product on home page
+        HomePage homePage = new HomePage(driver, log);
+        ProductDetailsPage details = homePage.clickFirstViewProductButton();
+        //5. Verify product detail is opened
+        Assert.assertTrue(details.productNameIsDisplayed(), "No se observe el nombre del producto.");
+        //6. Increase quantity to 4
+        String quantity = "4";
+        details.enterQuantityProduct(quantity);
+        //7. Click 'Add to cart' button
+        details.clickAddToCart();
+        //8. Click 'View Cart' button
+        CartPage cartPage = details.clickViewCartLink();
+        //9. Verify that product is displayed in cart page with exact quantity
+        Assert.assertEquals(cartPage.getQuantityProduct(), quantity, "El numero de productos guardados no es correcto.");
     }
 }

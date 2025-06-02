@@ -15,6 +15,7 @@ public class CartPage extends BasePage{
     private By productsVisiblesLocator = By.cssSelector("tr td.cart_product");
     private By productPriceLocator = By.cssSelector("tr td.cart_price");
     private By quantityLocator = By.cssSelector("td.cart_quantity");
+    private By quantityNumberLocator = By.cssSelector("td.cart_quantity button");
     private By totalPriceLocator = By.cssSelector("td.cart_total p.cart_total_price");
 
 
@@ -53,6 +54,10 @@ public class CartPage extends BasePage{
 
     public boolean productQuantityIsDisplayed() {
         return validateIfMessageIsDisplayed(quantityLocator);
+    }
+
+    public String getQuantityProduct() {
+        return getText(quantityNumberLocator, false);
     }
 
     public boolean productTotalPriceIsDisplayed() {

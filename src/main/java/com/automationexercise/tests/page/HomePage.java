@@ -9,6 +9,8 @@ public class HomePage extends BasePage{
     private By submitSubscriptionButtonLocator = By.id("subscribe");
     private By subscriptionTitleLocation = By.cssSelector("div.single-widget h2");
     private By successfullySubscribedMessageLocator = By.cssSelector("div.alert-success.alert");
+    private By viewProductButtonLocator = By.cssSelector("div.product-image-wrapper ul.nav a");
+
 
     public HomePage(WebDriver driver, Logger log) {
         super(driver, log);
@@ -33,6 +35,14 @@ public class HomePage extends BasePage{
     public String getSuccessfulSendSubscription() {
         return getText(successfullySubscribedMessageLocator, false);
     }
+
+    public ProductDetailsPage clickFirstViewProductButton() {
+        scrollToElement(viewProductButtonLocator);
+        click(viewProductButtonLocator);
+        return new ProductDetailsPage(driver, log);
+    }
+
+
 
 
 
