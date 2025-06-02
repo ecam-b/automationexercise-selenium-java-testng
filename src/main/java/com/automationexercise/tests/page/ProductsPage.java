@@ -1,10 +1,7 @@
 package com.automationexercise.tests.page;
 
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 import java.util.List;
 
@@ -16,6 +13,9 @@ public class ProductsPage extends BasePage{
     private By searchButtonLocator = By.id("submit_search");
     private By productFoundLocator = By.cssSelector("div.productinfo p");
     private By titleSearchedProductsLocator = By.cssSelector("h2.title");
+    private By productItemsLocator = By.cssSelector("div.single-products");
+    private By addToCartButtonLocator = By.cssSelector("div.overlay-content a.add-to-cart");
+    private By continueShoppingButtonLocator = By.cssSelector("button.btn-success");
 
 
 
@@ -63,8 +63,17 @@ public class ProductsPage extends BasePage{
         return getText(titleSearchedProductsLocator, true);
     }
 
+    public void addProductToCartButton(int i) {
+        List<WebElement> products = findAll(productItemsLocator);
+        WebElement product = products.get(i - 1);
+        scrollToElement(productItemsLocator);
+        hoverOverElement(product);
+        product.findElement(addToCartButtonLocator).click();
+    }
 
-
+    public void clickContinueShopping() {
+        click(continueShoppingButtonLocator);
+    }
 
 
 

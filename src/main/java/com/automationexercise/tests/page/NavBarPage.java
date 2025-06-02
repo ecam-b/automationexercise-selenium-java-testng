@@ -13,6 +13,7 @@ public class NavBarPage extends BasePage{
     private By contactUsLinkLocator = By.partialLinkText("Contact");
     private By testCasesLinkLocator = By.partialLinkText("Cases");
     private By productsLinkLocator = By.partialLinkText("Products");
+    private By cartLinkLocator = By.partialLinkText("Cart");
 
     private String urlPage = "https://automationexercise.com/";
 
@@ -65,6 +66,11 @@ public class NavBarPage extends BasePage{
     public ProductsPage clickProductsLink() {
         click(productsLinkLocator);
         return new ProductsPage(driver, log);
+    }
+
+    public CartPage clickCartLink() {
+        click(cartLinkLocator);
+        return new CartPage(driver, log);
     }
 
 

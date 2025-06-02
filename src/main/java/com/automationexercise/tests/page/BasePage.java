@@ -2,11 +2,13 @@ package com.automationexercise.tests.page;
 
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class BasePage {
     protected WebDriver driver;
@@ -70,4 +72,27 @@ public class BasePage {
         String text = waitUltilElementIsDisplayed(locator).getText();
         return lower ? text.toLowerCase() : text;
     }
+
+    protected void scrollToBotton() {
+        log.info("Scrolling to the bottom of the page");
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    }
+
+    /** Find all element using given locator */
+    protected List<WebElement> findAll(By locator) {
+        return driver.findElements(locator);
+    }
+
+    /** Realiza un hover (pasar el mouse) sobre un elemento */
+    protected void hoverOverElement(WebElement element) {
+        Actions action = new Actions(driver);
+        action.moveToElement(element).build().perform();
+        try {
+            Thread.sleep(1000);
+        } catch (NoSuchElementException | InterruptedException e) {
+            log.warn(e);
+        }
+    }
+
 }
