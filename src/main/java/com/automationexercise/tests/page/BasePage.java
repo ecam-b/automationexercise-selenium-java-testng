@@ -65,4 +65,9 @@ public class BasePage {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
     }
+
+    protected String getText(By locator, boolean lower) {
+        String text = waitUltilElementIsDisplayed(locator).getText();
+        return lower ? text.toLowerCase() : text;
+    }
 }

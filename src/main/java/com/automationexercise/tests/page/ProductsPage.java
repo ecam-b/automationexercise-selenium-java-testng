@@ -12,6 +12,11 @@ public class ProductsPage extends BasePage{
     private By titleAllProductsLocator = By.cssSelector("h2.title");
     private By productsCardsLocator = By.className("product-image-wrapper");
     private By viewProductButtonLocator = By.cssSelector("div.product-image-wrapper ul.nav a");
+    private By searchProductFieldLocator = By.id("search_product");
+    private By searchButtonLocator = By.id("submit_search");
+    private By productFoundLocator = By.cssSelector("div.productinfo p");
+    private By titleSearchedProductsLocator = By.cssSelector("h2.title");
+
 
 
     public ProductsPage(WebDriver driver, Logger log) {
@@ -36,6 +41,29 @@ public class ProductsPage extends BasePage{
         click(viewProductButtonLocator);
         return new ProductDetailsPage(driver, log);
     }
+
+    public void enterSearchProduct(String product) {
+        type(product, searchProductFieldLocator);
+    }
+
+    public void clickSearchProductButton() {
+        click(searchButtonLocator);
+    }
+
+    public void searchAnyProduct(String product) {
+        enterSearchProduct(product);
+        clickSearchProductButton();
+    }
+
+    public String getNameProductFound() {
+        return getText(productFoundLocator, true);
+    }
+
+    public String getTitleSearchedProducts() {
+        return getText(titleSearchedProductsLocator, true);
+    }
+
+
 
 
 
