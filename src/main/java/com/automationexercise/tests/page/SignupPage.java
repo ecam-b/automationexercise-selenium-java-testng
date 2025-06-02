@@ -104,8 +104,37 @@ public class SignupPage extends BasePage{
         type(number, mobileNumberFieldLocator);
     }
 
-    public AccountCreatedPage clickCreateAccount() {
+    public void clickCreateAccount() {
         click(createAccountButtonLocator);
+    }
+    
+    public AccountCreatedPage createNewAccount(
+            String gender, String password, String day, String month, String year,
+            String firstName, String lastName, String companyName, String address,
+            String address2, String country, String state, String city, String zipcode,
+            String mobileNumber) {
+        // Fill details: Title, Name, Email, Password, Date of birth
+        clickGender(gender);
+        enterPassword(password);
+        selectDay(day);
+        selectMonth(month);
+        selectYear(year);
+        // Select checkbox 'Sign up for our newsletter!'
+        clickNewsletterCheckbox();
+        // Select checkbox 'Receive special offers from our partners!'
+        clickSpecialOffersCheckbox();
+        // Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
+        enterFirstName(firstName);
+        enterLasttName(lastName);
+        enterCompanyName(companyName);
+        enterAddress(address);
+        enterAddress2(address2);
+        selectCountry(country);
+        enterState(state);
+        enterCity(city);
+        enterZipcode(zipcode);
+        enterMobileNumber(mobileNumber);
+        clickCreateAccount();
         return new AccountCreatedPage(driver, log);
     }
 

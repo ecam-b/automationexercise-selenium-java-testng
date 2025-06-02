@@ -6,9 +6,11 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 
 public class NavBarPage extends BasePage{
-    private By signupAndLoginButtonLocator = By.partialLinkText("Signup");
+    private By signupAndLoginLinkLocator = By.partialLinkText("Signup");
     private By loggedLinkLocator = By.partialLinkText("Logged in as");
     private By deleteAccountLinkLocator = By.partialLinkText("Delete Account");
+    private By logoutLinkLocator = By.partialLinkText("Logout");
+
 
 
     private String urlPage = "https://automationexercise.com/";
@@ -23,7 +25,7 @@ public class NavBarPage extends BasePage{
     }
 
     public void clickSignupAndLoginButton() {
-        click(signupAndLoginButtonLocator);
+        click(signupAndLoginLinkLocator);
     }
 
     public LoginPage clikSignAndLoginLink() {
@@ -45,7 +47,8 @@ public class NavBarPage extends BasePage{
         return new DeleteAccountPage(driver, log);
     }
 
-
-
-
+    public LoginPage clickLogoutLink() {
+        click(logoutLinkLocator);
+        return new LoginPage(driver, log);
+    }
 }

@@ -10,6 +10,8 @@ public class LoginPage extends BasePage {
     private By signUpButtonLocator = By.xpath("//button[@data-qa='signup-button']");
     private By userEmailFieldLocator = By.xpath("//input[@data-qa='login-email']");
     private By passwordFieldLocator = By.name("password");
+    private By titleLoginLocator = By.cssSelector("div.login-form h2");
+    private By loginButtonLocator = By.xpath("//button[@data-qa='login-button']");
 
     public LoginPage(WebDriver driver, Logger log) {
         super(driver, log);
@@ -32,5 +34,22 @@ public class LoginPage extends BasePage {
         enterNewEmail(email);
         clickSignUpButton();
         return new SignupPage(driver, log);
+    }
+
+    public String getTitleLogiPage() {
+        return waitUltilElementIsDisplayed(titleLoginLocator).getText();
+    }
+
+    public void enterEmailLogin(String email) {
+        type(email, userEmailFieldLocator);
+    }
+
+    public void enterPasswordLogin(String password) {
+        type(password, passwordFieldLocator);
+    }
+
+    public HomePage clickLoginButton() {
+        click(loginButtonLocator);
+        return new HomePage(driver, log);
     }
 }
