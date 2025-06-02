@@ -12,6 +12,7 @@ public class LoginPage extends BasePage {
     private By passwordFieldLocator = By.name("password");
     private By titleLoginLocator = By.cssSelector("div.login-form h2");
     private By loginButtonLocator = By.xpath("//button[@data-qa='login-button']");
+    private By incorrectPasswordMessageLocator = By.xpath("//p[contains(.,'email or password')]");
 
     public LoginPage(WebDriver driver, Logger log) {
         super(driver, log);
@@ -51,5 +52,9 @@ public class LoginPage extends BasePage {
     public HomePage clickLoginButton() {
         click(loginButtonLocator);
         return new HomePage(driver, log);
+    }
+
+    public String getMessageInvalidPassword() {
+        return waitUltilElementIsDisplayed(incorrectPasswordMessageLocator).getText();
     }
 }
