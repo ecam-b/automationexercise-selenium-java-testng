@@ -38,7 +38,7 @@ public class LoginTests extends TestUtilities {
         LoginPage loginPage1 = navBarPage.clickLogoutLink();
 
         //5. Verify 'Login to your account' is visible
-        Assert.assertEquals(loginPage1.getTitleLogiPage(), "Login to your account", "No se visualiza el mensaje 'Login to your account");
+        Assert.assertEquals(loginPage1.getTitleLogiPage(), "Login to your account", "No se visualiza el mensaje 'Login to your account'.");
         //6. Enter correct email address and password
         //7. Click 'login' button
         loginPage1.enterEmailLogin("ecam-b10@gmail.com");
@@ -49,7 +49,7 @@ public class LoginTests extends TestUtilities {
         //9. Click 'Delete Account' button
         DeleteAccountPage deleteAccountPage = navBarPage.clickDeleteAccountLink();
         //10. Verify that 'ACCOUNT DELETED!' is visible
-        Assert.assertEquals(deleteAccountPage.getAccountResultMessage(), "ACCOUNT DELETED!", "No se visualiza el mensaje 'ACCOUNT DELETED!'");
+        Assert.assertEquals(deleteAccountPage.getAccountResultMessage(), "ACCOUNT DELETED!", "No se visualiza el mensaje 'ACCOUNT DELETED!'.");
         deleteAccountPage.clickContinueButton();
     }
 
@@ -66,7 +66,7 @@ public class LoginTests extends TestUtilities {
         //Click 'login' button
         HomePage homePage = loginPage.clickLoginButton();
         //Verify error 'Your email or password is incorrect!' is visible
-        Assert.assertEquals(loginPage.getMessageInvalidPassword(), "Your email or password is incorrect!", "No se visualiza el mensaje 'Your email or password is incorrect!");
+        Assert.assertEquals(loginPage.getMessageInvalidPassword(), "Your email or password is incorrect!", "No se visualiza el mensaje 'Your email or password is incorrect!'.");
     }
 
     @Test
@@ -102,7 +102,7 @@ public class LoginTests extends TestUtilities {
         // Click 'Logout' button
         LoginPage loginPage1 = navBarPage.clickLogoutLink();
         // Verify that user is navigated to login page
-        Assert.assertEquals(loginPage1.getTitleLogiPage(), "Login to your account", "No se visualiza el mensaje 'Login to your account");
+        Assert.assertEquals(loginPage1.getTitleLogiPage(), "Login to your account", "No se visualiza el mensaje 'Login to your account'.");
         // Delete account
         loginPage1.enterEmailLogin("ecam-b10@gmail.com");
         loginPage1.enterPasswordLogin("testing123");
