@@ -1,6 +1,7 @@
 package com.automationexercise.tests.page;
 
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -45,5 +46,11 @@ public class BasePage {
         WebElement dropdownElement = driver.findElement(locator);
         Select dropdowm = new Select(dropdownElement);
         dropdowm.selectByVisibleText(option);
+    }
+
+    protected Alert switchToAlert() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.alertIsPresent());
+        return driver.switchTo().alert();
     }
 }

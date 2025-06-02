@@ -10,11 +10,9 @@ public class NavBarPage extends BasePage{
     private By loggedLinkLocator = By.partialLinkText("Logged in as");
     private By deleteAccountLinkLocator = By.partialLinkText("Delete Account");
     private By logoutLinkLocator = By.partialLinkText("Logout");
-
-
+    private By contactUsLinkLocator = By.partialLinkText("Contact");
 
     private String urlPage = "https://automationexercise.com/";
-
 
     public NavBarPage(WebDriver driver, Logger log) {
         super(driver, log);
@@ -51,4 +49,11 @@ public class NavBarPage extends BasePage{
         click(logoutLinkLocator);
         return new LoginPage(driver, log);
     }
+
+    public ContactUsPage clickContactUsLink() {
+        click(contactUsLinkLocator);
+        return new ContactUsPage(driver, log);
+    }
+
+
 }

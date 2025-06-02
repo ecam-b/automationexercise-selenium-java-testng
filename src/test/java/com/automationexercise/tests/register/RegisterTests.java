@@ -50,9 +50,9 @@ public class RegisterTests extends TestUtilities {
     }
 
     @Test
-    public void registerUserWithExistingEmail() {
+    public void registerUserWithExistingEmailTest() {
         // Pre-conditions: Para este test es necesario tener un usuario creado, se puede hacer con pasos de ejecuciones previos con APIs
-        log.info("Ejecutando registerUserTest");
+        log.info("Ejecutando registerUserWithExistingEmail");
         // Open page
         NavBarPage navBarPage = new NavBarPage(driver, log);
         navBarPage.openPage();

@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class LoginTests extends TestUtilities {
 
     @Test
-    public void loginUserWithCorrectEmailAndPassword() {
+    public void loginUserWithCorrectEmailAndPasswordTest() {
         log.info("Ejecutando loginUserWithCorrectEmailAndPassword");
         // Open page
         NavBarPage navBarPage = new NavBarPage(driver, log);
@@ -54,7 +54,7 @@ public class LoginTests extends TestUtilities {
     }
 
     @Test
-    public void loginUserWithIncorrectEmailAndPassword() {
+    public void loginUserWithIncorrectEmailAndPasswordTest() {
         log.info("Ejecutando loginUserWithCorrectEmailAndPassword");
         NavBarPage navBarPage = new NavBarPage(driver, log);
         navBarPage.openPage();
@@ -70,7 +70,7 @@ public class LoginTests extends TestUtilities {
     }
 
     @Test
-    public void logoutUser() {
+    public void logoutUserTest() {
         log.info("Ejecutando registerUserTest");
         // Open page
         NavBarPage navBarPage = new NavBarPage(driver, log);
