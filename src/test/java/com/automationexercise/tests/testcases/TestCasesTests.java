@@ -20,6 +20,5 @@ public class TestCasesTests extends TestUtilities {
         TestCasesPage testCasesPage = navBarPage.clickTestCasesLink();
         //5. Verify user is navigated to test cases page successfully
         Assert.assertEquals(testCasesPage.getTitleText(), "test cases", "No se visualiza el mensaje 'Test Cases'");
-
     }
 }

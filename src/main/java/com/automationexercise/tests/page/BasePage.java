@@ -1,10 +1,7 @@
 package com.automationexercise.tests.page;
 
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -52,5 +49,20 @@ public class BasePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.alertIsPresent());
         return driver.switchTo().alert();
+    }
+
+    protected boolean validateIfMessageIsDisplayed(By locator) {
+        try {
+            waitUltilElementIsDisplayed(locator);
+            return true;
+        } catch (StaleElementReferenceException e) {
+            return false;
+        }
+    }
+
+    protected void scrollToElement(By locator) {
+        WebElement element = driver.findElement(locator);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 }
