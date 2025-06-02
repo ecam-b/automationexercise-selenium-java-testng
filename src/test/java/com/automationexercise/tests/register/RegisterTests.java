@@ -49,4 +49,20 @@ public class RegisterTests extends TestUtilities {
         deleteAccountPage.clickContinueButton();
     }
 
+    @Test
+    public void registerUserWithExistingEmail() {
+        // Pre-conditions: Para este test es necesario tener un usuario creado, se puede hacer con pasos de ejecuciones previos con APIs
+        log.info("Ejecutando registerUserTest");
+        // Open page
+        NavBarPage navBarPage = new NavBarPage(driver, log);
+        navBarPage.openPage();
+        //4. Click on 'Signup / Login' button
+        LoginPage loginPage = navBarPage.clikSignAndLoginLink();
+        //6. Enter name and already registered email address
+        //7. Click 'Signup' button
+        loginPage.fillSignup("Elian", "ecam-b101@gmail.com");
+        //8. Verify error 'Email Address already exist!' is visible
+        Assert.assertEquals(loginPage.getMessageEmailAlreadyExist(), "Email Address already exist!", "No se visualiza el mensaje 'Email Address already exist!'");
+    }
+
 }

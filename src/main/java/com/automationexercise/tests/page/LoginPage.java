@@ -13,6 +13,7 @@ public class LoginPage extends BasePage {
     private By titleLoginLocator = By.cssSelector("div.login-form h2");
     private By loginButtonLocator = By.xpath("//button[@data-qa='login-button']");
     private By incorrectPasswordMessageLocator = By.xpath("//p[contains(.,'email or password')]");
+    private By emailAlreadyExistMessageLocator = By.xpath("//p[contains(.,'already exist')]");
 
     public LoginPage(WebDriver driver, Logger log) {
         super(driver, log);
@@ -56,5 +57,9 @@ public class LoginPage extends BasePage {
 
     public String getMessageInvalidPassword() {
         return waitUltilElementIsDisplayed(incorrectPasswordMessageLocator).getText();
+    }
+
+    public String getMessageEmailAlreadyExist() {
+        return waitUltilElementIsDisplayed(emailAlreadyExistMessageLocator).getText();
     }
 }
