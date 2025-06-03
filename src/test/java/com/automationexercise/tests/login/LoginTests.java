@@ -78,7 +78,7 @@ public class LoginTests extends TestUtilities {
         // Go Signup and Login page
         LoginPage loginPage = navBarPage.clikSignAndLoginLink();
         // Create new account
-        SignupPage signupPage = loginPage.fillSignup("Elian", "ecam-b3@gmail.com");
+        SignupPage signupPage = loginPage.fillSignup("Elian", "ecam-b7@gmail.com");
         AccountCreatedPage accountCreatedPage = signupPage.createNewAccount(
                 "male",
                 "testing123",
