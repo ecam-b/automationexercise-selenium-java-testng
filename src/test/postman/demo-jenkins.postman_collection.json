@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "d5823035-ad4e-422b-8de8-3a3e4f4956c0",
+		"name": "demo-jenkins",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19734216",
+		"_collection_link": "https://ecam-team.postman.co/workspace/Team-Workspace~1c9e9f80-7a31-4067-8735-d5e84a7bed83/collection/19734216-d5823035-ad4e-422b-8de8-3a3e4f4956c0?action=share&source=collection_link&creator=19734216"
+	},
+	"item": [
+		{
+			"name": "Get All Products List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code debe corresponder a 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar esquema del recurso 'products'\", () => {\r",
+							"    const jsonData = pm.response.json();\r",
+							"\r",
+							"    jsonData.products.forEach(product => {\r",
+							"        // Existencia de atributos\r",
+							"        pm.expect(product).to.have.property(\"id\");\r",
+							"        pm.expect(product).to.have.property(\"name\");\r",
+							"        pm.expect(product).to.have.property(\"price\");\r",
+							"        pm.expect(product).to.have.property(\"brand\");\r",
+							"        pm.expect(product).to.have.property(\"category\");\r",
+							"        pm.expect(product.category).to.have.property(\"usertype\");\r",
+							"        pm.expect(product.category).to.have.property(\"category\");\r",
+							"\r",
+							"        // Tipos de datos\r",
+							"        pm.expect(typeof product.id).to.equal(\"number\");\r",
+							"        pm.expect(typeof product.name).to.equal(\"string\");\r",
+							"        pm.expect(typeof product.price).to.equal(\"string\");\r",
+							"        pm.expect(typeof product.brand).to.equal(\"string\");\r",
+							"        pm.expect(typeof product.category).to.be.oneOf([\"object\", \"array\"]);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/productsList",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"productsList"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://automationexercise.com",
+			"type": "string"
+		}
+	]
+}
