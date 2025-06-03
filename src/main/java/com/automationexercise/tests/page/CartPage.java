@@ -17,6 +17,8 @@ public class CartPage extends BasePage{
     private By quantityLocator = By.cssSelector("td.cart_quantity");
     private By quantityNumberLocator = By.cssSelector("td.cart_quantity button");
     private By totalPriceLocator = By.cssSelector("td.cart_total p.cart_total_price");
+    private By proceedToCheckoutButtonLocator = By.cssSelector("a.check_out");
+    private By registerOrLoginLinkLocator = By.partialLinkText("Register / Login");
 
 
     public CartPage(WebDriver driver, Logger log) {
@@ -62,6 +64,16 @@ public class CartPage extends BasePage{
 
     public boolean productTotalPriceIsDisplayed() {
         return validateIfMessageIsDisplayed(totalPriceLocator);
+    }
+
+    public CheckoutPage clickProceedToCheckout() {
+        click(proceedToCheckoutButtonLocator);
+        return new CheckoutPage(driver, log);
+    }
+
+    public LoginPage clickRegisterOrLoginLink() {
+        click(registerOrLoginLinkLocator);
+        return new LoginPage(driver, log);
     }
 
 
