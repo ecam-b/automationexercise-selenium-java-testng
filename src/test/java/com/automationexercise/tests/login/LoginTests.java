@@ -104,10 +104,12 @@ public class LoginTests extends TestUtilities {
         // Verify that user is navigated to login page
         Assert.assertEquals(loginPage1.getTitleLogiPage(), "Login to your account", "No se visualiza el mensaje 'Login to your account'.");
         // Delete account
-        loginPage1.enterEmailLogin("ecam-b3@gmail.com");
+        loginPage1.enterEmailLogin("ecam-b7@gmail.com");
         loginPage1.enterPasswordLogin("testing123");
         loginPage1.clickLoginButton();
+
         DeleteAccountPage deleteAccountPage = navBarPage.clickDeleteAccountLink();
+        Assert.assertEquals(deleteAccountPage.getAccountResultMessage(), "ACCOUNT DELETED!", "No se visualiza el mensaje 'ACCOUNT DELETED!'");
         deleteAccountPage.clickContinueButton();
     }
 }
