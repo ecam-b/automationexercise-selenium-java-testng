@@ -1,0 +1,890 @@
+{
+	"info": {
+		"_postman_id": "f78aa925-ea48-4456-8907-eb97c1fff23f",
+		"name": "Automationexercise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19734216",
+		"_collection_link": "https://ecam-team.postman.co/workspace/Team-Workspace~1c9e9f80-7a31-4067-8735-d5e84a7bed83/collection/19734216-f78aa925-ea48-4456-8907-eb97c1fff23f?action=share&source=collection_link&creator=19734216"
+	},
+	"item": [
+		{
+			"name": "Get All Products List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code debe corresponder a 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar esquema del recurso 'products'\", () => {\r",
+							"    const jsonData = pm.response.json();\r",
+							"\r",
+							"    jsonData.products.forEach(product => {\r",
+							"        // Existencia de atributos\r",
+							"        pm.expect(product).to.have.property(\"id\");\r",
+							"        pm.expect(product).to.have.property(\"name\");\r",
+							"        pm.expect(product).to.have.property(\"price\");\r",
+							"        pm.expect(product).to.have.property(\"brand\");\r",
+							"        pm.expect(product).to.have.property(\"category\");\r",
+							"        pm.expect(product.category).to.have.property(\"usertype\");\r",
+							"        pm.expect(product.category).to.have.property(\"category\");\r",
+							"\r",
+							"        // Tipos de datos\r",
+							"        pm.expect(typeof product.id).to.equal(\"number\");\r",
+							"        pm.expect(typeof product.name).to.equal(\"string\");\r",
+							"        pm.expect(typeof product.price).to.equal(\"string\");\r",
+							"        pm.expect(typeof product.brand).to.equal(\"string\");\r",
+							"        pm.expect(typeof product.category).to.be.oneOf([\"object\", \"array\"]);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/productsList",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"productsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST To All Products List - Negative Case",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code debe corresponder a 405\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(405);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de respuesta debe indicar que el método de solicitud no está soportado\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"This request method is not supported.\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/productsList",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"productsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Brands List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code debe corresponder a 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar esquema del recurso 'brands'\", () => {\r",
+							"    const jsonData = pm.response.json();\r",
+							"\r",
+							"    jsonData.brands.forEach(brand => {\r",
+							"        // Existencia de atributos\r",
+							"        pm.expect(brand).to.have.property(\"id\");\r",
+							"        pm.expect(brand).to.have.property(\"brand\");\r",
+							"\r",
+							"        // Tipos de datos\r",
+							"        pm.expect(typeof brand.id).to.equal(\"number\");\r",
+							"        pm.expect(typeof brand.brand).to.equal(\"string\");\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/brandsList",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"brandsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT To All Brands List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code debe corresponder a 405\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(405);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de respuesta debe indicar que el método de solicitud no está soportado\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"This request method is not supported.\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/brandsList",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"brandsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST To Search Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code debe corresponder a 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar esquema del recurso 'products'\", () => {\r",
+							"    const jsonData = pm.response.json();\r",
+							"\r",
+							"    jsonData.products.forEach(product => {\r",
+							"        // Existencia de atributos\r",
+							"        pm.expect(product).to.have.property(\"id\");\r",
+							"        pm.expect(product).to.have.property(\"name\");\r",
+							"        pm.expect(product).to.have.property(\"price\");\r",
+							"        pm.expect(product).to.have.property(\"brand\");\r",
+							"        pm.expect(product).to.have.property(\"category\");\r",
+							"        pm.expect(product.category).to.have.property(\"usertype\");\r",
+							"        pm.expect(product.category).to.have.property(\"category\");\r",
+							"\r",
+							"        // Tipos de datos\r",
+							"        pm.expect(typeof product.id).to.equal(\"number\");\r",
+							"        pm.expect(typeof product.name).to.equal(\"string\");\r",
+							"        pm.expect(typeof product.price).to.equal(\"string\");\r",
+							"        pm.expect(typeof product.brand).to.equal(\"string\");\r",
+							"        pm.expect(typeof product.category).to.be.oneOf([\"object\", \"array\"]);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que las propiedades 'name' y 'category' tienen el recurso buscado\" , function() {\r",
+							"    const jsonData = pm.response.json();\r",
+							"\r",
+							"    jsonData.products.forEach(product => {\r",
+							"        pm.expect(\r",
+							"            product.name.includes(\"Top\") || product.category.category.includes(\"Top\")\r",
+							"            ).to.be.true;\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "search_product",
+							"value": "top",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/searchProduct",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"searchProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST To Search Product without search_product parameter - Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code debe corresponder a 400\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de respuesta debe indicar que la request no se puede ejecutar correctamente por falta de parámetros\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"Bad request, search_product parameter is missing in POST request.\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/searchProduct",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"searchProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST To Verify Login with valid details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code debe corresponder a 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de respuesta debe indicar que el usuario existe.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"User exists!\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "ecam-b101@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "testing123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/verifyLogin",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"verifyLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST To Verify Login without email parameter - Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code debe corresponder a 400\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de respuesta debe indicar que la request no se puede ejecutar correctamente por falta de parámetros\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"Bad request, email or password parameter is missing in POST request.\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/verifyLogin",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"verifyLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE To Verify Login - Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code debe corresponder a 405\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(405);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de respuesta debe indicar que el método de solicitud no está soportado\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"This request method is not supported.\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/verifyLogin",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"verifyLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST To Verify Login with invalid details - Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code debe corresponder a 404\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de respuesta debe indicar que el usuario No existe.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"User not found!\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "ecam-b1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "testing123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/verifyLogin",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"verifyLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST To Create/Register User Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code debe corresponder a 201\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de respuesta debe indicar que el usuario existe.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"User created!\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Juan",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Mr",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "birth_month",
+							"value": "march",
+							"type": "text"
+						},
+						{
+							"key": "birth_year",
+							"value": "1990",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "Juan",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Pérez",
+							"type": "text"
+						},
+						{
+							"key": "company",
+							"value": "ABC Corp",
+							"type": "text"
+						},
+						{
+							"key": "address1",
+							"value": "Calle 123",
+							"type": "text"
+						},
+						{
+							"key": "address2",
+							"value": "Apt 4",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "Canada",
+							"type": "text"
+						},
+						{
+							"key": "zipcode",
+							"value": "12345",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "Ontario",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Toronto",
+							"type": "text"
+						},
+						{
+							"key": "mobile_number",
+							"value": "1234567890",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/createAccount",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"createAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT METHOD To Update User Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code debe corresponder a 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de respuesta debe indicar que el usuario existe.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"User updated!\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Juan",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Mr",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "birth_month",
+							"value": "march",
+							"type": "text"
+						},
+						{
+							"key": "birth_year",
+							"value": "1991",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "Juan",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Pérez",
+							"type": "text"
+						},
+						{
+							"key": "company",
+							"value": "ABC Corp",
+							"type": "text"
+						},
+						{
+							"key": "address1",
+							"value": "Calle 123",
+							"type": "text"
+						},
+						{
+							"key": "address2",
+							"value": "Apt 4",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "Canada",
+							"type": "text"
+						},
+						{
+							"key": "zipcode",
+							"value": "12345",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "Ontario",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Toronto",
+							"type": "text"
+						},
+						{
+							"key": "mobile_number",
+							"value": "1234567890",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/updateAccount",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"updateAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET user account detail by email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code debe corresponder a 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar esquema del recurso 'user'\", () => {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    const user = jsonData.user\r",
+							"    // Existencia de atributos\r",
+							"    pm.expect(user).to.have.property(\"id\");\r",
+							"    pm.expect(user).to.have.property(\"name\");\r",
+							"    pm.expect(user).to.have.property(\"email\");\r",
+							"    pm.expect(user).to.have.property(\"title\");\r",
+							"    pm.expect(user).to.have.property(\"birth_day\");\r",
+							"    pm.expect(user).to.have.property(\"birth_month\");\r",
+							"    pm.expect(user).to.have.property(\"birth_year\");\r",
+							"    pm.expect(user).to.have.property(\"first_name\");\r",
+							"    pm.expect(user).to.have.property(\"last_name\");\r",
+							"    pm.expect(user).to.have.property(\"company\");\r",
+							"    pm.expect(user).to.have.property(\"address1\");\r",
+							"    pm.expect(user).to.have.property(\"address2\");\r",
+							"    pm.expect(user).to.have.property(\"country\");\r",
+							"    pm.expect(user).to.have.property(\"state\");\r",
+							"    pm.expect(user).to.have.property(\"city\");\r",
+							"    pm.expect(user).to.have.property(\"zipcode\");\r",
+							"\r",
+							"    // Tipos de datos\r",
+							"    pm.expect(typeof user.id).to.equal(\"number\");\r",
+							"    pm.expect(typeof user.name).to.equal(\"string\");\r",
+							"    pm.expect(typeof user.email).to.equal(\"string\");\r",
+							"    pm.expect(typeof user.title).to.equal(\"string\");\r",
+							"    pm.expect(typeof user.birth_day).to.equal(\"string\");\r",
+							"    pm.expect(typeof user.birth_month).to.equal(\"string\");\r",
+							"    pm.expect(typeof user.birth_year).to.equal(\"string\");\r",
+							"    pm.expect(typeof user.first_name).to.equal(\"string\");\r",
+							"    pm.expect(typeof user.last_name).to.equal(\"string\");\r",
+							"    pm.expect(typeof user.company).to.equal(\"string\");\r",
+							"    pm.expect(typeof user.address1).to.equal(\"string\");\r",
+							"    pm.expect(typeof user.address2).to.equal(\"string\");\r",
+							"    pm.expect(typeof user.country).to.equal(\"string\");\r",
+							"    pm.expect(typeof user.state).to.equal(\"string\");\r",
+							"    pm.expect(typeof user.city).to.equal(\"string\");\r",
+							"    pm.expect(typeof user.zipcode).to.equal(\"string\");\r",
+							"});\r",
+							"\r",
+							"// Ideal realizar un test buscando el correo electronico\r",
+							"pm.test(\"El correo electrónico debe estar presente en la respuesta.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.user.email).to.eql(pm.environment.get(\"email\"));\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/getUserDetailByEmail?email={{email}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"getUserDetailByEmail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "{{email}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE METHOD To Delete User Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code debe corresponder a 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de respuesta debe indicar que se elimino la cuenta.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"Account deleted!\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/deleteAccount",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"deleteAccount"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
