@@ -41,5 +41,13 @@ public class PaymentPage extends BasePage{
         return new PaymentDonePage(driver, log);
     }
 
+    public void fillCreditCardForm(String name, String number, String cvc, String month, String year) {
+        enterNameOnCard(name);
+        enterCardNumber(number);
+        enterCvcCard(cvc);
+        enterExpiryMonth(month);
+        enterExpiryYear(year);
+    }
+
 
 }

@@ -26,17 +26,15 @@ public class SignupPage extends BasePage{
     private By createAccountButtonLocator = By.xpath("//button[@data-qa='create-account']");
 
 
-
-
     public SignupPage(WebDriver driver, Logger log) {
         super(driver, log);
     }
 
     public void clickGender(String gender) {
-        if (gender.toLowerCase() == "female") {
-            click(femaleCheckboxLocator);
-        } else {
+        if (gender.toLowerCase() == "male") {
             click(maleCheckboxLocator);
+        } else {
+            click(femaleCheckboxLocator);
         }
     }
 

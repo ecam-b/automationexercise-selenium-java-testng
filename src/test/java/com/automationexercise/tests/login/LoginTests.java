@@ -16,7 +16,7 @@ public class LoginTests extends TestUtilities {
         // Create new
         //4. Click on 'Signup / Login' button
         LoginPage loginPage = navBarPage.clikSignAndLoginLink();
-        SignupPage signupPage = loginPage.fillSignup("Test", "ecam-b10@gmail.com");
+        SignupPage signupPage = loginPage.fillSignup("Test", "ecam-b2@gmail.com");
         AccountCreatedPage accountCreatedPage = signupPage.createNewAccount(
                 "male",
                 "testing123",
@@ -41,7 +41,7 @@ public class LoginTests extends TestUtilities {
         Assert.assertEquals(loginPage1.getTitleLogiPage(), "Login to your account", "No se visualiza el mensaje 'Login to your account'.");
         //6. Enter correct email address and password
         //7. Click 'login' button
-        loginPage1.enterEmailLogin("ecam-b10@gmail.com");
+        loginPage1.enterEmailLogin("ecam-b2@gmail.com");
         loginPage1.enterPasswordLogin("testing123");
         HomePage homePage = loginPage1.clickLoginButton();
         //8. Verify that 'Logged in as username' is visible
@@ -78,7 +78,7 @@ public class LoginTests extends TestUtilities {
         // Go Signup and Login page
         LoginPage loginPage = navBarPage.clikSignAndLoginLink();
         // Create new account
-        SignupPage signupPage = loginPage.fillSignup("Elian", "ecam-b10@gmail.com");
+        SignupPage signupPage = loginPage.fillSignup("Elian", "ecam-b3@gmail.com");
         AccountCreatedPage accountCreatedPage = signupPage.createNewAccount(
                 "male",
                 "testing123",
@@ -104,7 +104,7 @@ public class LoginTests extends TestUtilities {
         // Verify that user is navigated to login page
         Assert.assertEquals(loginPage1.getTitleLogiPage(), "Login to your account", "No se visualiza el mensaje 'Login to your account'.");
         // Delete account
-        loginPage1.enterEmailLogin("ecam-b10@gmail.com");
+        loginPage1.enterEmailLogin("ecam-b3@gmail.com");
         loginPage1.enterPasswordLogin("testing123");
         loginPage1.clickLoginButton();
         DeleteAccountPage deleteAccountPage = navBarPage.clickDeleteAccountLink();

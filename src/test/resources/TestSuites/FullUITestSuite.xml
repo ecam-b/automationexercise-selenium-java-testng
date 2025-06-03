@@ -16,4 +16,46 @@
         </classes>
     </test>
 
+    <test name="Contact Us tests">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.automationexercise.tests.contactus.ContactUsTests"/>
+        </classes>
+    </test>
+
+    <test name="Test Cases tests">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.automationexercise.tests.testcases.TestCasesTests"/>
+        </classes>
+    </test>
+
+    <test name="Products tests">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.automationexercise.tests.products.ProductsTests"/>
+        </classes>
+    </test>
+
+    <test name="Home tests">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.automationexercise.tests.home.HomeTests"/>
+        </classes>
+    </test>
+
+    <test name="Cart tests">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.automationexercise.tests.cart.CartTests"/>
+        </classes>
+    </test>
+
+    <test name="Place Order tests">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.automationexercise.tests.placeorder.PlaceOrderTests"/>
+        </classes>
+    </test>
+
 </suite>

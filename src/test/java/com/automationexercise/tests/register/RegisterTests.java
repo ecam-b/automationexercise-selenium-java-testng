@@ -17,7 +17,7 @@ public class RegisterTests extends TestUtilities {
         LoginPage loginPage = navBarPage.clikSignAndLoginLink();
         // Enter name and email address
         // Click 'Signup' button
-        SignupPage signupPage = loginPage.fillSignup("Elian", "ecam-b10@gmail.com");
+        SignupPage signupPage = loginPage.fillSignup("Elian", "ecam-b1@gmail.com");
         // Fill details: Title, Name, Email, Password, Date of birth
         AccountCreatedPage accountCreatedPage = signupPage.createNewAccount(
                 "male",

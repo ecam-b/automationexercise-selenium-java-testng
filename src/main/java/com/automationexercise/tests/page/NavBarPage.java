@@ -11,9 +11,9 @@ public class NavBarPage extends BasePage{
     private By deleteAccountLinkLocator = By.partialLinkText("Delete Account");
     private By logoutLinkLocator = By.partialLinkText("Logout");
     private By contactUsLinkLocator = By.partialLinkText("Contact");
-    private By testCasesLinkLocator = By.partialLinkText("Cases");
+    private By testCasesLinkLocator = By.partialLinkText("Test Cases");
     private By productsLinkLocator = By.partialLinkText("Products");
-    private By cartLinkLocator = By.partialLinkText("Cart");
+    private By cartLinkLocator = By.xpath("(//ul[@class='nav navbar-nav']/li/a)[3]");
 
     private String urlPage = "https://automationexercise.com/";
 

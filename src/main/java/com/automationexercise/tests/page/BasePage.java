@@ -24,12 +24,12 @@ public class BasePage {
     }
 
     protected WebElement waitUltilElementIsDisplayed(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     protected WebElement waitUltilElementIsClickeable(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
