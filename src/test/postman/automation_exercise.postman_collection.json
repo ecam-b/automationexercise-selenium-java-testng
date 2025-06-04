@@ -465,7 +465,7 @@
 					"urlencoded": [
 						{
 							"key": "email",
-							"value": "ecam-b1@gmail.com",
+							"value": "invalid@gmail.com",
 							"type": "text"
 						},
 						{
