@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="SmokeTestSuite" verbose="1">
+
+    <test name="Contact Us tests">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.automationexercise.tests.contactus.ContactUsTests"/>
+        </classes>
+    </test>
+
+</suite>
