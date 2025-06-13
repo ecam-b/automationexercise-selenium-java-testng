@@ -6,6 +6,8 @@ target/
 ### reports ###
 /allure-results/
 /test-output/screenshots/
+/test-output/ExtentReport.html
+src/test/postman/reportes/newman-report.html
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
@@ -15,6 +17,12 @@ target/
 *.iws
 *.iml
 *.ipr
+
+### node ###
+/node_modules/
+/.mvn/
+package.json
+package-lock.json
 
 ### Eclipse ###
 .apt_generated
