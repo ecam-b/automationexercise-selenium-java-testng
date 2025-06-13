@@ -5,7 +5,7 @@ target/
 
 ### reports ###
 /allure-results/
-/test-output/
+/test-output/screenshots/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
