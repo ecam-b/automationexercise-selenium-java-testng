@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="NegativeTestSuite" verbose="1">
+
+    <test name="Test Cases tests">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.automationexercise.tests.testcases.TestCasesTests"/>
+        </classes>
+    </test>
+
+</suite>

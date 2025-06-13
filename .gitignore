@@ -3,8 +3,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### allure ###
-allure-results/
+### reports ###
+/allure-results/
+/test-output/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
