@@ -6,8 +6,6 @@ target/
 ### reports ###
 /allure-results/
 /test-output/screenshots/
-/test-output/ExtentReport.html
-src/test/postman/reportes/newman-report.html
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
